@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Teacher Portal</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Teacher Portal</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/index.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="heading">
+        <h2>Teacher Singup</h2>
+    </div>
+    <div class="signup-page">
+        <form action="" id="form-data" role="form" onsubmit="signUp(event);">
+            <div id="inputs">
+                <input type="text" id="name" placeholder="Full Name" style="width: 80%;" required="">
+            </div>
+            <div id="inputs">
+                <input type="email" id="email" placeholder="Email" style="width: 80%;" required="">
+            </div>
+            <div id="inputs">
+                <input type="password" id="password" placeholder="Password" style="width: 80%;" required="">
+            </div>
+            <div id="inputs">
+                <input type="password" id="cnfp" placeholder="Confirm Password" style="width: 80%;" required="">
+            </div>
+            <div id="inputs">
+                <Button class="btn">Signup</Button>
+            </div>
+        </form>
+
+        <p style="color: red;">Already a member? <a href="/signin.html">Sign In</a></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
