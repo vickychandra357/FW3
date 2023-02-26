@@ -17,8 +17,8 @@
                 <a class="navbar-brand" href="#">Teacher Portal</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/index.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
@@ -26,31 +26,33 @@
         <h2>Teacher Dashboard</h2>
     </div>
     <div class="display">
-        <p>Welcome back : <span id="user"></span></p>
-        <p>Your Email ID : <span id="user-mail"></span></p>
+        <!-- <p style="color: blue;">Welcome back : <span id="user"></span></p> -->
+        <p style="color: blue;">Your Email ID : <span id="p-email"></span></p>
     </div>
     <div class="content"></div>
     <div class="heading">
         <h2>Change Password</h2>
     </div>
     <div class="login-page" id="form-data">
-        <form action="">
+        
             <div id="inputs">
-                <input type="password" id="password" placeholder="Password" style="width: 80%;"required="">
+                <input type="password" id="old-pass" placeholder="Password" style="width: 80%;">
             </div>
             <div id="inputs">
-                <input type="password" id="npswd" placeholder="New Password" style="width: 80%;"required="">
+                <input type="password" id="new-pass" placeholder="New Password" style="width: 80%;">
             </div>
             <div id="inputs">
-                <input type="password" id="cnfp" placeholder="Confirm Password" style="width: 80%;"required="">
+                <input type="password" id="new-confirm-pass" placeholder="Confirm Password" style="width: 80%;">
             </div>
             <div id="inputs">
-                <Button class="btn">Change</Button>
+                <Button class="btn"  onclick="changePassword()">Change Password</Button>
             </div>
             <div id="inputs">
-                <Button class="btn">Logout</Button>
+                <Button class="btn" onclick="logout()">Logout</Button>
             </div>
-        </form>
+        
+        <p style="color: red" id="error-message"></p>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

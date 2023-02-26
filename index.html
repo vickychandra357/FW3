@@ -28,25 +28,26 @@
         <h2>Teacher Singup</h2>
     </div>
     <div class="signup-page">
-        <form action="" id="form-data" role="form" onsubmit="signUp(event);">
+        
             <div id="inputs">
-                <input type="text" id="name" placeholder="Full Name" style="width: 80%;" required="">
+                <input type="text" id="name" placeholder="Full Name" style="width: 80%;" >
             </div>
             <div id="inputs">
-                <input type="email" id="email" placeholder="Email" style="width: 80%;" required="">
+                <input type="email" id="email" placeholder="Email" style="width: 80%;" >
             </div>
             <div id="inputs">
-                <input type="password" id="password" placeholder="Password" style="width: 80%;" required="">
+                <input type="password" id="password" placeholder="Password" style="width: 80%;" >
             </div>
             <div id="inputs">
-                <input type="password" id="cnfp" placeholder="Confirm Password" style="width: 80%;" required="">
+                <input type="password" id="cnfp" placeholder="Confirm Password" style="width: 80%;" >
             </div>
             <div id="inputs">
-                <Button class="btn">Signup</Button>
+                <Button class="btn" onclick="signUp()">Signup</Button>
             </div>
-        </form>
+        
+        <p style="color: red" id="error-message"></p>
 
-        <p style="color: red;">Already a member? <a href="/login.html">Sign In</a></p>
+        <p style="color: rgb(221, 207, 9); ">Already a member? <a href="/login.html">Sign In</a></p>
     </div>
     <script src="script.js"></script>
 </body>

@@ -1,43 +1,124 @@
-var fname = document.getElementById('name');
-var email = document.getElementById('email');
-var password = document.getElementById('password');
-var cnfp = document.getElementById('cnfp');
-let arr = [];
 
-const signUp = e => {
-let formData=JSON.parse(localStorage.getItem('form-data'))||[];
-let exist=formData.length &&
-    JSON.parse(localStorage.getItem('form-data')).some(data =>
-        data.fname.toLowerCase()== fname.toLowerCase()
+
+function signUp(){
+    var fname = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var cnfp = document.getElementById('cnfp').value;  
+    if (email && password && cnfp && password === cnfp) {
+        var user = {
+          email: email,
+          password: password,
+        };
+        const users = localStorage.getItem("users");
+        console.log("USERS", users);
+        var usersArr = [];
+        if (users) {
+          usersArr = JSON.parse(localStorage.getItem("users"));
+          if (usersArr.filter((user) => user.email === email).length == 0) {
+            usersArr.push(user);
+          } else {
+            document.getElementById("error-message").innerText =
+              "user with this email already exists";
+          }
+        } else {
+          usersArr = [user];
+        }
+        localStorage.setItem("users", JSON.stringify(usersArr));
+        window.location.href = "/login.html";
+      }
+}
+
+function loginUser() {
+    var email = document.getElementById("email-input").value;
+    var password = document.getElementById("pass-input").value;
+    
+  
+    if (email && password) {
+      const users = localStorage.getItem("users")
+        ? JSON.parse(localStorage.getItem("users"))
+        : [];
+  
+      console.log("users", users);
+  
+      const userFromArr = users.filter((user) => user.email === email);
+      console.log("userFromArr", userFromArr);
+  
+      if (userFromArr.length > 0) {
+        if (userFromArr[0].password == password) {
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({
+              email: email,
+              password: password,
+              token: "myToken",
+            })
+          );
+          window.location.href = "/dashboard.html";
+        } else {
+          document.getElementById("error-message").innerText =
+            "Password is incorrect";
+        }
+      }
+       else {
+        document.getElementById("error-message").innerText =
+          "User does not exist";
+      }
+    }
+  }
+  
+  if (window.location.href == "http://127.0.0.1:5500/dashboard.html") {
+    if (localStorage.getItem("currentUser")) {
+      var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      document.getElementById("user").innerText = currentUser.fname;
+      document.getElementById("p-email").innerText = currentUser.email;
+    } else {
+      window.location.href = "/login.html";
+    }
+  } else {
+    if (localStorage.getItem("currentUser")) {
+      window.location.href = "/dashboard.html";
+    }
+  }
+  
+  function changePassword() {
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    var oldPass = document.getElementById("old-pass").value;
+    var newPass = document.getElementById("new-pass").value;
+    var newConfirmPass = document.getElementById("new-confirm-pass").value;
+  
+    if (oldPass === currentUser.password) {
+      if (newPass === newConfirmPass && newPass !== oldPass) {
+        // editing the currentUserObj
+        currentUser.password = newPass;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  
+        //   editing the users array
+        var users = JSON.parse(localStorage.getItem("users"));
+        var allUsersExceptCurrent = users.filter(
+          (user) => user.email != currentUser.email
         );
-    if(!exist){
-        formData.push({
-            fname,email,password,cnfp
-        });
-        localStorage.setItem('formData',JSON.stringify(formData));
-        document.querySelector('form').reset();
-        document.getElementById('fname').focus();
-        alert("Account Created.\n\nPlease Sign In using in the link below. ");
-        location.href = "/index.html";
+        var newUser = {
+          email: currentUser.email,
+          password: currentUser.password,
+        };
+        allUsersExceptCurrent.push(newUser);
+        localStorage.setItem("users", JSON.stringify(allUsersExceptCurrent));
+      } else if (oldPass === newPass) {
+        document.getElementById("error-message").innerText =
+          "Your old password should not be your new password";
+      } else if (newPass != newConfirmPass) {
+        document.getElementById("error-message").innerText =
+          "Your new password does not match your new confirmation password";
+      }
+    } else {
+      document.getElementById("error-message").innerText =
+        "Your old password does not match";
     }
-    else{
-        alert("Oooopppsss.... Duplicate found!!!!\nYou have already signined up")
-    }
-    e.preventDefault();    
-}
+  }
+  
+  function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "/login.html";
+  }
 
-
-
-function signIn(e) {
-    let email = document.getElementById('email').value, pwd = document.getElementById('password').value;
-    let formData = JSON.parse(localStorage.getItem('formData')) || [];
-    let exist = formData.length && 
-    JSON.parse(localStorage.getItem('formData')).some(data => data.email.toLowerCase() == email && data.password.toLowerCase() == password);
-    if(!exist){
-        alert("Incorrect login credentials");
-    }
-    else{
-        location.href = "/dashboard.html";
-    }
-    e.preventDefault();
-}

@@ -17,8 +17,8 @@
                 <a class="navbar-brand" href="#">Teacher Portal</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/index.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
@@ -26,18 +26,20 @@
         <h2>Teacher Login</h2>
     </div>
     <div class="login-page">
-        <form action="" id="form-data" role="form" onsubmit="signIn(event);">
+        
             <div id="inputs">
-                <input type="email" id="email" placeholder="Email" style="width: 80%;"required="">
+                <input type="email" id="email-input" placeholder="Email" style="width: 80%;">
             </div>
             <div id="inputs">
-                <input type="password" id="password" placeholder="Password" style="width: 80%;"required="">
+                <input type="password" id="pass-input" placeholder="Password" style="width: 80%;">
             </div>
             <div id="inputs">
-                <Button class="btn">Login</Button>
+                <Button class="btn"  onclick="loginUser()">Login</Button>
             </div>
-        </form>
-        <p style="color: red;">Don't have an account? <a href="/index.html">Sign Up</a></p>
+        
+        <p style="color: red" id="error-message"></p>
+        <p style="color: yellow">Don't have an account? <a href="/index.html">Sign Up</a></p>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -14,4 +14,11 @@ body{
 
 .heading{
     color: red;
+    margin: 10px;
+    padding: 10px;
+}
+
+.btn{
+    background-color: black;
+    color: white;
 }
