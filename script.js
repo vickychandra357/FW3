@@ -25,7 +25,7 @@ function signUp(){
           usersArr = [user];
         }
         localStorage.setItem("users", JSON.stringify(usersArr));
-        window.location.href = "/login.html";
+        window.location.href ="/login.html";
       }
 }
 
