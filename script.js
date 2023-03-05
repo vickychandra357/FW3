@@ -25,7 +25,7 @@ function signUp(){
           usersArr = [user];
         }
         localStorage.setItem("users", JSON.stringify(usersArr));
-        window.location.href ="/login.html";
+        window.location.href ="login.html";
       }
 }
 
@@ -54,11 +54,11 @@ function loginUser() {
               token: "myToken",
             })
           );
-          window.location.href = "/dashboard.html";
+          window.location.href = "dashboard.html";
         } else {
           document.getElementById("error-message").innerText =
             "Password is incorrect";
-        }
+        }x
       }
        else {
         document.getElementById("error-message").innerText =
@@ -70,14 +70,14 @@ function loginUser() {
   if (window.location.href == "http://127.0.0.1:5500/dashboard.html") {
     if (localStorage.getItem("currentUser")) {
       var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-      document.getElementById("user").innerText = currentUser.fname;
+      // document.getElementById("user").innerText = currentUser.fname;
       document.getElementById("p-email").innerText = currentUser.email;
     } else {
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     }
   } else {
     if (localStorage.getItem("currentUser")) {
-      window.location.href = "/dashboard.html";
+      window.location.href = "dashboard.html";
     }
   }
   
@@ -119,6 +119,6 @@ function loginUser() {
   
   function logout() {
     localStorage.removeItem("currentUser");
-    window.location.href = "/login.html";
+    window.location.href = "login.html";
   }
 
