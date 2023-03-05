@@ -77,7 +77,7 @@ function loginUser() {
     }
   } else {
     if (localStorage.getItem("currentUser")) {
-      window.location.href = "dashboard.html";
+      window.location.href = "/dashboard.html";
     }
   }
   
